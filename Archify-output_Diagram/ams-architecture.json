@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Attendance Management System (AMS)",
+    "output": "ams-architecture.html",
+    "locale": "en",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "student-calendar",
+        "label": "Student calendar",
+        "focus": ["student", "login", "webapp", "attendance-core", "mysql"],
+        "note": "Student.php reads attendance, semester dates, and holidays."
+      },
+      {
+        "id": "teacher-marking",
+        "label": "Teacher marking",
+        "focus": ["teacher", "login", "webapp", "attendance-core", "mysql"],
+        "note": "Teacher.php loads and saves daily attendance."
+      },
+      {
+        "id": "admin-operations",
+        "label": "Admin operations",
+        "focus": ["admin", "login", "webapp", "admin-tools", "mysql"],
+        "note": "Admin pages manage records, settings, reports, and downloads."
+      },
+      {
+        "id": "biometric-flow",
+        "label": "Biometric flow",
+        "focus": ["sensor", "esp8266", "biometric-api", "mysql"],
+        "note": "PHP endpoints document device requests, attendance, and OLED-ready responses."
+      }
+    ]
+  },
+  "layout": {
+    "mode": "grid",
+    "origin": [48, 92],
+    "cols": 5,
+    "cellW": 180,
+    "cellH": 82,
+    "gapX": 60,
+    "gapY": 88
+  },
+  "components": [
+    {
+      "id": "admin",
+      "type": "external",
+      "label": "Admin",
+      "sublabel": "admin_id session",
+      "size": [180, 82],
+      "row": 0,
+      "col": 0
+    },
+    {
+      "id": "teacher",
+      "type": "external",
+      "label": "Teacher",
+      "sublabel": "teacher_id session",
+      "size": [180, 82],
+      "row": 1,
+      "col": 0
+    },
+    {
+      "id": "student",
+      "type": "external",
+      "label": "Student",
+      "sublabel": "student_id session",
+      "size": [180, 82],
+      "row": 2,
+      "col": 0
+    },
+    {
+      "id": "login",
+      "type": "security",
+      "label": "Login & Authentication",
+      "sublabel": "index.php • Registration.php",
+      "size": [180, 82],
+      "row": 1,
+      "col": 1
+    },
+    {
+      "id": "webapp",
+      "type": "backend",
+      "label": "PHP Role Portals",
+      "sublabel": "PHP + HTML/CSS/JS pages",
+      "size": [180, 82],
+      "row": 1,
+      "col": 2
+    },
+    {
+      "id": "attendance-core",
+      "type": "backend",
+      "label": "Attendance & Calendar",
+      "sublabel": "teacher mark • student calendar",
+      "size": [180, 82],
+      "row": 2,
+      "col": 3
+    },
+    {
+      "id": "admin-tools",
+      "type": "backend",
+      "label": "Admin Operations",
+      "sublabel": "CRUD • semester/holidays • reports",
+      "size": [180, 82],
+      "row": 0,
+      "col": 4
+    },
+    {
+      "id": "mysql",
+      "type": "database",
+      "label": "MySQL Database",
+      "sublabel": "attendance • MySQL",
+      "size": [180, 82],
+      "row": 3,
+      "col": 4
+    },
+    {
+      "id": "sensor",
+      "type": "external",
+      "label": "Fingerprint Sensor",
+      "sublabel": "AS608 • enrollment UI",
+      "size": [180, 82],
+      "row": 3,
+      "col": 0
+    },
+    {
+      "id": "esp8266",
+      "type": "external",
+      "label": "ESP8266 + OLED",
+      "sublabel": "device • OLED response",
+      "size": [180, 82],
+      "row": 3,
+      "col": 1
+    },
+    {
+      "id": "biometric-api",
+      "type": "backend",
+      "label": "PHP Biometric API",
+      "sublabel": "attendance • control • enrollment",
+      "size": [180, 82],
+      "row": 3,
+      "col": 2
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Biometric hardware referenced by PHP",
+      "wraps": ["sensor", "esp8266"]
+    }
+  ],
+  "connections": [
+    {
+      "id": "admin-login",
+      "from": "admin",
+      "to": "login"
+    },
+    {
+      "id": "teacher-login",
+      "from": "teacher",
+      "to": "login"
+    },
+    {
+      "id": "student-login",
+      "from": "student",
+      "to": "login"
+    },
+    {
+      "id": "login-to-portals",
+      "from": "login",
+      "to": "webapp",
+      "label": "role",
+      "variant": "emphasis"
+    },
+    {
+      "id": "portals-to-attendance",
+      "from": "webapp",
+      "to": "attendance-core",
+      "label": "access"
+    },
+    {
+      "id": "portals-to-admin",
+      "from": "webapp",
+      "to": "admin-tools",
+      "label": "manage"
+    },
+    {
+      "id": "attendance-to-mysql",
+      "from": "attendance-core",
+      "to": "mysql",
+      "label": "SQL"
+    },
+    {
+      "id": "admin-to-mysql",
+      "from": "admin-tools",
+      "to": "mysql",
+      "label": "SQL",
+      "labelAt": [1098, 188]
+    },
+    {
+      "id": "portals-to-biometric",
+      "from": "webapp",
+      "to": "biometric-api",
+      "label": "control",
+      "labelAt": [618, 358]
+    },
+    {
+      "id": "sensor-to-device",
+      "from": "sensor",
+      "to": "esp8266",
+      "label": "ID"
+    },
+    {
+      "id": "device-to-api",
+      "from": "esp8266",
+      "to": "biometric-api",
+      "label": "HTTP",
+      "variant": "emphasis"
+    },
+    {
+      "id": "api-to-device",
+      "from": "biometric-api",
+      "to": "esp8266",
+      "label": "JSON",
+      "labelAt": [498, 620]
+    },
+    {
+      "id": "biometric-to-mysql",
+      "from": "biometric-api",
+      "to": "mysql",
+      "label": "write Present"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Role portals and attendance",
+      "items": [
+        "index.php authenticates Admin, Teacher, and Student; role pages are Teacher.php, Student.php, and admin_dashboard.php.",
+        "Teacher.php uses fetch_attendance.php and save_attendance.php; Student.php displays records using get_attendance.php.",
+        "Frontend assets include index.css, Teacher.css, Student1.css, Student.js, and admin_dashboard.css.",
+        "attendance_functions.php applies active semester and holiday date rules; semester_settings.php and holidays.php manage those settings."
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Admin data and exports",
+      "items": [
+        "Management pages present: manage_students1.php, manage_teachers.php, manage_departments.php, and admin_manage_attendance.php.",
+        "reports.php is present. Download handlers present: download_excel.php, download_student_excel.php, download_student_attendance.php, and admin_download_attendance.php.",
+        "PHP queries use students, teacher, admin, departments, attendance_record, semester_settings, and holidays; db_connect.php selects the MySQL database."
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Biometric evidence and limits",
+      "items": [
+        "AS608 is named in add_biometric.php; PHP comments identify an ESP8266 device and an OLED-ready result in biometric_attendance.php.",
+        "biometric_attendance.php receives GET device_id/fingerprint_id and returns JSON; the ESP8266 polls enrollment endpoints and submits completion by POST.",
+        "Device endpoints present: biometric_attendance.php, biometric_attendance_control.php, biometric_get_request.php, and biometric_complete_enrollment.php.",
+        "Biometric tables referenced: biometric_devices, biometric_attendance_control, biometric_enrollment_requests, and student_biometrics; attendance is written to attendance_record.",
+        "No standalone SQL schema, ESP8266 firmware, or OLED source file appears in the project inventory."
+      ]
+    }
+  ]
+}
