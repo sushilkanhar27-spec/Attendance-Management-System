@@ -10,11 +10,11 @@
 // WIFI SETTINGS
 // ============================================================
 
-const char* WIFI_SSID = "realmeP45Gg8ty";
-const char* WIFI_PASSWORD = "ihkm8644";
+const char* WIFI_SSID = " ";
+const char* WIFI_PASSWORD = " ";
 
 // Windows PC running XAMPP
-const char* SERVER_IP = "10.54.241.24";
+const char* SERVER_IP = " "; //IP P4
 
 // ============================================================
 // DEVICE SETTINGS
