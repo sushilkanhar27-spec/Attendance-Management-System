@@ -570,7 +570,7 @@ $conn = mysqli_connect(
     "root",
     "",
     "attendance_management",
-    3307
+    3306
 );
 
 if (!$conn) {
