@@ -1,0 +1,337 @@
+/* =========================================================
+   Attendance Management System - Professional Login Theme
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --accent: #06b6d4;
+    --success: #16a34a;
+    --warning: #f59e0b;
+    --danger: #dc2626;
+    --text: #172033;
+    --muted: #64748b;
+    --white: #ffffff;
+    --border: rgba(148, 163, 184, 0.28);
+    --glass: rgba(255, 255, 255, 0.94);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 16px;
+    font-family: 'Inter', Arial, sans-serif;
+    color: var(--text);
+
+    /* Professional campus background image */
+    background-image:
+        linear-gradient(135deg, rgba(7, 22, 48, 0.82), rgba(14, 116, 144, 0.55)),
+        url('GPK.webp');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Soft decorative light effects */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    filter: blur(10px);
+    pointer-events: none;
+    opacity: .28;
+}
+
+body::before {
+    top: -100px;
+    left: -90px;
+    background: #38bdf8;
+}
+
+body::after {
+    right: -100px;
+    bottom: -100px;
+    background: #818cf8;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 440px);
+    padding: 34px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 26px;
+    background: var(--glass);
+    box-shadow:
+        0 30px 70px rgba(0, 0, 0, 0.30),
+        0 8px 25px rgba(0, 0, 0, 0.12);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: cardIn .55s ease-out;
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(28px) scale(.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.logo {
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 22px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    box-shadow: 0 12px 28px rgba(37, 99, 235, .32);
+    font-size: 42px;
+    line-height: 1;
+}
+
+h2 {
+    text-align: center;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -.6px;
+    color: #0f172a;
+}
+
+.subtitle {
+    margin: 8px 0 26px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.role {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 22px;
+    padding: 5px;
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+}
+
+.role button {
+    min-height: 44px;
+    padding: 10px 7px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    background: transparent;
+    color: #64748b;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    transition: .25s ease;
+}
+
+.role button:hover {
+    color: var(--primary);
+    background: #e8f0ff;
+}
+
+.role button.active {
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), #3b82f6);
+    box-shadow: 0 5px 13px rgba(37, 99, 235, .25);
+}
+
+.input-group {
+    margin-bottom: 17px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #334155;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.input-group input {
+    width: 100%;
+    height: 50px;
+    padding: 0 15px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    outline: none;
+    background: #f8fafc;
+    color: #0f172a;
+    font-family: inherit;
+    font-size: 14px;
+    transition: .25s ease;
+}
+
+.input-group input::placeholder {
+    color: #94a3b8;
+}
+
+.input-group input:hover {
+    border-color: #94a3b8;
+}
+
+.input-group input:focus {
+    border-color: var(--primary);
+    background: #fff;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .11);
+}
+
+.login-btn,
+.reset-btn,
+.create_account {
+    width: 100%;
+    min-height: 50px;
+    border-radius: 12px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.login-btn {
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    box-shadow: 0 10px 20px rgba(37, 99, 235, .24);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 25px rgba(37, 99, 235, .32);
+}
+
+.reset-btn,
+.create_account {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.reset-btn {
+    margin-top: 10px;
+    color: #92400e;
+    background: #fff7ed;
+    border: 1px solid #fed7aa;
+}
+
+.reset-btn:hover {
+    background: #ffedd5;
+    transform: translateY(-1px);
+}
+
+.create_account {
+    margin-top: 10px;
+    color: #1e40af;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+}
+
+.create_account:hover {
+    background: #dbeafe;
+    transform: translateY(-1px);
+}
+
+.error {
+    margin-top: 16px;
+    padding: 11px 13px;
+    border: 1px solid #fecaca;
+    border-radius: 10px;
+    color: var(--danger);
+    background: #fef2f2;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.footer {
+    margin-top: 24px;
+    padding-top: 17px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    color: #64748b;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .25px;
+}
+
+@media (max-width: 520px) {
+    body {
+        padding: 18px 12px;
+        background-attachment: scroll;
+    }
+
+    .container {
+        padding: 26px 20px;
+        border-radius: 22px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    .logo {
+        width: 70px;
+        height: 70px;
+        font-size: 37px;
+    }
+}
+
+@media (max-height: 700px) and (min-width: 521px) {
+    body {
+        align-items: flex-start;
+        padding-top: 22px;
+        padding-bottom: 22px;
+    }
+
+    .container {
+        padding: 24px 30px;
+    }
+
+    .logo {
+        width: 64px;
+        height: 64px;
+        font-size: 34px;
+        margin-bottom: 10px;
+    }
+
+    .subtitle {
+        margin-bottom: 18px;
+    }
+
+    .input-group {
+        margin-bottom: 12px;
+    }
+}
