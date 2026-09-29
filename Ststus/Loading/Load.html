@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="Load.css">
+</head>
+<body>
+    <div id="loader">
+        <div class="loader-box">
+            <div class="loader-circle">
+                <div class="checkmark">✓</div>
+            </div>
+
+            <h3>Attendance Management System</h3>
+            <p>Loading...</p>
+
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+
+            setTimeout(function () {
+                loader.classList.add("hide");
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>
