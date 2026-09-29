@@ -1,0 +1,247 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #f4f7fc;
+    display: flex;
+}
+
+/* Sidebar */
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: linear-gradient(180deg, #0d47a1, #1976d2);
+    color: #fff;
+    overflow: auto;
+}
+
+.sidebar h2 {
+    text-align: center;
+    padding: 25px 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, .2);
+    letter-spacing: 1px;
+}
+
+.sidebar ul {
+    list-style: none;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin: 8px 0;
+}
+
+.sidebar ul li a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 15px 25px;
+    transition: .3s;
+    font-size: 16px;
+}
+
+.sidebar ul li a i {
+    width: 25px;
+}
+
+.sidebar ul li a:hover {
+    background: rgba(255, 255, 255, .15);
+    padding-left: 35px;
+}
+
+/* Main */
+
+.main {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    min-height: 100vh;
+    padding: 30px;
+}
+
+/* Top Bar */
+
+.topbar {
+    background: #fff;
+    border-radius: 12px;
+    padding: 20px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, .08);
+    margin-bottom: 30px;
+}
+
+.topbar h2 {
+    color: #0d47a1;
+    font-weight: 600;
+}
+
+.topbar p {
+    color: #666;
+    font-size: 15px;
+}
+
+/* Dashboard Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+    margin-bottom: 35px;
+}
+
+.card {
+    color: #fff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .15);
+    transition: .3s;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card i {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.card h1 {
+    font-size: 34px;
+    margin-bottom: 8px;
+}
+
+.card p {
+    font-size: 17px;
+}
+
+.blue {
+    background: linear-gradient(135deg, #1565c0, #42a5f5);
+}
+
+.green {
+    background: linear-gradient(135deg, #2e7d32, #66bb6a);
+}
+
+.orange {
+    background: linear-gradient(135deg, #ef6c00, #ffa726);
+}
+
+.red {
+    background: linear-gradient(135deg, #c62828, #ef5350);
+}
+
+/* Menu Boxes */
+
+.menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.box {
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+    padding: 35px 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+    transition: .3s;
+}
+
+.box:hover {
+    transform: translateY(-8px);
+    background: #1976d2;
+    color: #fff;
+}
+
+.box i {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.box h3 {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #1976d2;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #eee;
+}
+
+/* Responsive */
+
+@media(max-width:900px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar h2 {
+        display: none;
+    }
+
+    .sidebar ul li a {
+        text-align: center;
+        padding: 18px;
+    }
+
+    .sidebar ul li a span {
+        display: none;
+    }
+
+    .sidebar ul li a i {
+        width: auto;
+        font-size: 20px;
+    }
+
+    .main {
+        margin-left: 70px;
+        width: calc(100% - 70px);
+    }
+
+}
+
+@media(max-width:600px) {
+
+    .topbar {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .cards,
+    .menu {
+        grid-template-columns: 1fr;
+    }
+
+    .main {
+        padding: 15px;
+    }
+
+}

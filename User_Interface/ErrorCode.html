@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HTTP Status Animation</title>
+
+    <link rel="stylesheet" href="ErrorCode.css">
+</head>
+
+<body class="error-page">
+
+    <!-- Demo Buttons -->
+    <div class="demo-buttons">
+
+        <button onclick="showHttpStatus(200)">200</button>
+        <button onclick="showHttpStatus(301)">301</button>
+        <button onclick="showHttpStatus(302)">302</button>
+        <button onclick="showHttpStatus(400)">400</button>
+        <button onclick="showHttpStatus(401)">401</button>
+        <button onclick="showHttpStatus(403)">403</button>
+        <button onclick="showHttpStatus(404)">404</button>
+        <button onclick="showHttpStatus(500)">500</button>
+        <button onclick="showHttpStatus(502)">502</button>
+        <button onclick="showHttpStatus(503)">503</button>
+
+    </div>
+
+
+    <!-- HTTP Status Animation -->
+
+    <div id="httpStatus" class="status-container" role="dialog" aria-modal="true">
+
+        <div class="status-card">
+
+            <!-- Animation -->
+            <div id="animationArea" class="animation-area">
+            </div>
+
+            <!-- Status Code -->
+            <div id="statusCode" class="status-code">
+                404
+            </div>
+
+            <!-- Title -->
+            <h2 id="statusTitle">
+                Page Not Found
+            </h2>
+
+            <!-- Message -->
+            <p id="statusMessage">
+                The requested page could not be found.
+            </p>
+
+            <!-- Button -->
+            <button class="status-button" onclick="closeStatus()">
+                Go Back
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <script src="ErrorCode.js"></script>
+
+</body>
+</html>
